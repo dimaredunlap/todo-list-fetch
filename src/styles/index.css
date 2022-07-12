@@ -1,12 +1,56 @@
-
-/* 
-
-    You can write your own styles here...
-    
-    
-    ...Or you can use the import command to include 
-    other sylesheets into your bunde as well, e.j:
-    
-    import 'relative/path/to/stylesheet.scss';
-
-*/
+.card{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    width: 30%;
+    padding: 10;
+    box-shadow: 
+        0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+        0 6px 20px 0 rgba(0, 0, 0, 0.19),
+        0 1px 1px rgba(0,0,0,0.15),
+        0 10px 0 -5px white,
+        0 10px 1px -4px rgba(0,0,0,0.15),
+        0 20px 0 -10px white,
+        0 20px 1px -9px rgba(0,0,0,0.15);
+}
+h1{
+    color: rgba(248, 223, 227, 0.801);
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 60px;
+    text-align: center;
+}
+button {
+    float:right;
+    padding-right: 10px;
+    border: none;
+    background: none;
+    color: gray;
+}
+ul {
+    list-style: none;
+    margin: auto;
+    padding: 0%;
+    color: gray;
+}
+li {
+    border-bottom: 1px solid rgba(183, 175, 175, 0.818);
+    padding-top: 4px;
+    padding-bottom: 9px;
+    padding-left: 10px;
+}
+.counter {
+    background-color: white;
+    color: gray;
+}
+.repeating{
+    position: relative;
+    margin: 0 auto;
+    padding: 5px;
+    width: auto;
+    height: auto;
+}
