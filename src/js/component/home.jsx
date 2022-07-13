@@ -6,13 +6,13 @@ import rigoImage from "../../img/rigo-baby.jpg";
 //create your first component
 const Home = () => {
   const [ToDoList, setToDoList] = useState([]);
-
+  const apiURL = "https://assets.breatheco.de/apis/fake/todos/user/dimaredunlap"
   const addItem = (onKeyDownEvent) => {
     if (onKeyDownEvent.keyCode === 13) {
       let newTask = onKeyDownEvent.target.value;
 	  const newToDo = {label:newTask, done:false}
       const newList = [...ToDoList, newToDo];
-      fetch("https://assets.breatheco.de/apis/fake/todos/user/alesanchezr", {
+      fetch(apiURL, {
         method: "PUT",
         body: JSON.stringify(newList),
         headers: {
@@ -35,8 +35,27 @@ const Home = () => {
     }
   };
   const removeItem = (index) => {
-    const removeTask = ToDoList.filter((item, i) => i != index);
-    setToDoList(removeTask);
+    const newList = ToDoList.filter((item, i) => i != index);
+    setToDoList(newList);
+    fetch(apiURL, {
+      method: "PUT",
+      body: JSON.stringify(newList),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((resp) => {
+        if (resp.status == 200) {
+          return resp.json();
+        }
+      })
+      .then((data) => {
+        alert(data.result);
+    fetchListItems;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   const [inputValue, setInputValue] = useState("");
   const [isShown, setIsShown] = useState({
@@ -48,12 +67,7 @@ const Home = () => {
     fetchListItems();
   }, []);
   const fetchListItems = () => {
-    fetch("https://assets.breatheco.de/apis/fake/todos/user/alesanchezr", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(apiURL)
       .then((resp) => {
         if (resp.status == 200) {
           return resp.json();
